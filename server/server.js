@@ -127,30 +127,31 @@ STRICT RULES:
 
       question = question.trim();
       // 🔥 HARD ANTI-REPEAT CHECK
-if (previousQuestions) {
-  const isSimilar = previousQuestions.some(q =>
-    q.toLowerCase().slice(0, 20) === question.toLowerCase().slice(0, 20)
+if (previousQuestions && previousQuestions.length > 0) {
+  const normalizedNew = question.toLowerCase().trim();
+
+  const isDuplicate = previousQuestions.some(q =>
+    q.toLowerCase().trim() === normalizedNew
   );
 
-  if (isSimilar) {
+  if (isDuplicate) {
     const fallbackQuestions = [
       "What type of work environment do you prefer?",
-      "Do you enjoy working with technology or people more?",
-      "What motivates you to work hard?",
-      "What are your long-term goals?",
-      "Do you prefer practical or theoretical work?",
-      "What kind of challenges excite you?",
-      "Do you enjoy leadership roles?",
-      "How do you handle failure or setbacks?"
+      "Do you enjoy working with data, people, or machines?",
+      "What motivates you the most in life?",
+      "What are your biggest strengths?",
+      "Do you enjoy solving logical or creative problems?",
+      "What kind of career excites you?",
+      "Do you prefer stability or risk-taking?",
+      "What skills do you want to improve?"
     ];
 
-    question =
-      fallbackQuestions[
-        previousAnswers.length % fallbackQuestions.length
-      ];
+    // pick question NOT already used
+    question = fallbackQuestions.find(q =>
+      !previousQuestions.includes(q)
+    ) || "What are your career goals?";
   }
 }
-
     } catch (e) {
       console.log("Parsing error:", e);
       question = "What subjects do you enjoy the most?";

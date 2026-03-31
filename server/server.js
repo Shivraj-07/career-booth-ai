@@ -61,11 +61,13 @@ Give:
 
 /* ================= SMART NEXT QUESTION ================= */
 app.post("/next-question", async (req, res) => {
-  const { previousAnswers, previousQuestions } = req.body;
+  const { previousAnswers = [], previousQuestions = [] } = req.body;
 
-  const formattedAnswers = previousAnswers
-    .map((a, i) => `Answer ${i + 1}: ${a}`)
-    .join("\n");
+const formattedAnswers = previousAnswers
+  .map((a, i) => `Answer ${i + 1}: ${a}`)
+  .join("\n");
+
+  console.log("REQ BODY:", req.body);
 
   const prompt = `
 You are an intelligent career guidance AI.
@@ -111,7 +113,7 @@ STRICT RULES:
 
     try {
       if (data.choices && data.choices.length > 0) {
-        const msg = data.choices[0].message;
+        const msg = data?.choices?.[0]?.message;
 
         if (typeof msg === "string") {
           question = msg;

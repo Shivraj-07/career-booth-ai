@@ -3,7 +3,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const path = require("path");
-const fetch = require("node-fetch");
 const PDFDocument = require("pdfkit");
 require("dotenv").config();
 

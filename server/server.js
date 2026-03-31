@@ -325,7 +325,7 @@ app.post("/send-email", async (req, res) => {
 
 /* ================= SERVER ================= */
 const PORT = process.env.PORT || 3000;
-
+console.log("KEY:", process.env.OPENROUTER_API_KEY);
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Details</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>👤 Your Details</h2>
+
+  <input id="name" placeholder="Enter your name">
+  <input id="email" placeholder="Enter your email">
+
+  <button onclick="next()">Continue</button>
+</div>
+
+<script>
+function next() {
+  localStorage.setItem("name", document.getElementById("name").value);
+  localStorage.setItem("email", document.getElementById("email").value);
+  window.location.href = "quiz.html";
+}
+</script>
+
+</body>
+</html>

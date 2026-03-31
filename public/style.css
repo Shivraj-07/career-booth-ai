@@ -1,0 +1,314 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== BODY BACKGROUND ===== */
+body {
+  min-height: 100vh;
+  color: white;
+}
+
+/* ===== PAGE BACKGROUNDS ===== */
+.home-bg,
+.quiz-bg,
+.result-bg {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 120px; /* space for navbar + progress */
+}
+
+/* ===== BACKGROUND IMAGES ===== */
+.home-bg {
+  background:
+    linear-gradient(rgba(81,142,202,0.6), rgba(30,64,175,0.7)),
+    url("images/home.jpg") center/cover no-repeat;
+}
+
+.quiz-bg {
+  background:
+    linear-gradient(rgba(81,142,202,0.6), rgba(30,64,175,0.7)),
+    url("images/quiz.jpg") center/cover no-repeat;
+}
+
+.result-bg {
+  background: 
+    linear-gradient(rgba(81, 142, 202, 0.5), rgba(30, 64, 175, 0.6)),
+    url("images/result.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 80px;
+}
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  padding: 12px 30px;
+
+  background: rgba(81,142,202,0.85);
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  z-index: 1000;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.brand-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+/* ===== GLASS CARD ===== */
+.container,
+.quiz-box {
+  width: 550px;
+  padding: 50px;
+
+  background: rgba(81,142,202,0.55);
+  border-radius: 20px;
+
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.3);
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+
+  text-align: center;
+  transition: 0.3s;
+}
+
+.container:hover,
+.quiz-box:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== INPUTS ===== */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #60A5FA, #2563EB);
+  color: white;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ===== PROGRESS BAR (FIXED POSITION) ===== */
+.progress-wrapper {
+  position: fixed;
+  top: 80px; /* below navbar */
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 400px;
+  text-align: center;
+  z-index: 999;
+}
+
+#progressText {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#progressFill {
+  height: 100%;
+  width: 0%;
+
+  background: linear-gradient(90deg, #60A5FA, #2563EB);
+  transition: width 0.4s ease;
+}
+
+/* ===== QUESTION ===== */
+#question {
+  margin-bottom: 20px;
+  padding: 0 10px;
+
+  font-size: 20px;
+  font-weight: 600;
+
+  line-height: 1.6;
+
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* ===== BACKGROUND BLOBS (FIXED TO BLUE THEME) ===== */
+.bg-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+
+@keyframes float {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(30px,-40px); }
+  100% { transform: translate(0,0); }
+}
+
+
+/* ===== SPLASH SCREEN ===== */
+.splash-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  height: 100vh;
+
+  animation: fadeSlide 0.8s ease;
+}
+
+/* LOGO */
+.splash-logo {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+
+  border-radius: 20px;
+
+}
+
+/* TITLE */
+.splash-title {
+  font-size: 42px;
+  font-weight: bold;
+  color: rgb(7, 159, 197);
+
+  text-shadow: 0 5px 20px rgba(93, 120, 227, 0.8);
+}
+
+.splash-title span {
+  color: #60A5FA;
+}
+
+/* TAGLINE */
+.splash-tagline {
+  margin-top: 10px;
+  font-size: 16px;
+  color: rgba(93, 120, 227, 0.8);
+}
+
+/* BUTTON */
+.start-btn {
+  margin-top: 30px;
+  padding: 12px 28px;
+
+  border-radius: 30px;
+  border: none;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #60A5FA, #2563EB);
+  color: white;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+
+  transition: 0.3s;
+}
+
+.start-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* FLOAT ANIMATION */
+@keyframes floatLogo {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* ===== SPLASH PAGE BACKGROUND ===== */
+/* ===== SPLASH PAGE BACKGROUND ===== */
+.splash-bg {
+  background-color: aliceblue;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

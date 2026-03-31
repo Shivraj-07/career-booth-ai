@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Career Report</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="result-bg">
+
+  <!-- ===== NAVBAR ===== -->
+  <div class="navbar">
+    <div class="nav-content">
+      <img src="logo.png" class="logo" />
+      <h1 class="brand-text">Career Booth <span>AI</span></h1>
+    </div>
+  </div>
+
+  <!-- ===== REPORT CONTAINER ===== -->
+  <div class="container">
+    <h2>Your Career Guidance Report</h2>
+
+    <!-- ✅ Cards will be rendered here -->
+    <div id="cards-container"></div>
+
+    <!-- ===== ACTION BUTTONS ===== -->
+    <div style="margin-top: 20px;">
+      <button onclick="downloadReport()">📥 Download PDF</button>
+      <button onclick="sendEmail()">📧 Send Email</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

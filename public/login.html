@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Career AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="home-bg">
+
+  <!-- ===== NAVBAR ===== -->
+  <div class="navbar" id="navbar">
+    <div class="nav-content">
+      <img src="logo.png" class="logo" />
+      <h1 class="brand-text">Career Booth <span>AI</span></h1>
+    </div>
+  </div>
+
+  <!-- ===== BACKGROUND BLOBS ===== -->
+  <div class="bg-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+ 
+
+  <!-- ===== MAIN CONTAINER ===== -->
+  <div class="container">
+    <h2>AI Career Guidance System</h2>
+
+    <input type="text" id="name" placeholder="Enter your name" />
+    <input type="email" id="email" placeholder="Enter your email" />
+
+    <button onclick="start()">Start Quiz</button>
+  </div>
+
+  <!-- ===== SCRIPT ===== -->
+  <script>
+    function start() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+
+      localStorage.setItem("name", name);
+      localStorage.setItem("email", email);
+
+      window.location.href = "quiz.html";
+    }
+  </script>
+
+</body>
+</html>

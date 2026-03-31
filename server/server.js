@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
+const path = require("path");
+const fetch = require("node-fetch");
 const PDFDocument = require("pdfkit");
 require("dotenv").config();
 
@@ -205,7 +207,15 @@ app.post("/download-pdf", (req, res) => {
   doc
     .rect(0, 0, doc.page.width, 100)
     .fill("#518ECA");
-    doc.image("public/logo.png", 450, 20, { width: 50 });
+    const path = require("path");
+
+const logoPath = path.join(__dirname, "public/logo.png");
+
+try {
+  doc.image(logoPath, 450, 20, { width: 50 });
+} catch (e) {
+  console.log("Logo not found, skipping...");
+}
 
   doc
     .fillColor("white")
@@ -311,12 +321,10 @@ app.post("/send-email", async (req, res) => {
     res.status(500).send("Email sending failed");
   }
 });
-console.log("API KEY:", process.env.OPENROUTER_API_KEY);
-console.log("EMAIL:", process.env.EMAIL_USER);
-console.log("PASS:", process.env.EMAIL_PASS);
-
 
 /* ================= SERVER ================= */
-app.listen(3000, () => {
-  console.log("🚀 Server running at http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });
